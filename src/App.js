@@ -193,7 +193,7 @@ export default function App() {
         {/* AI 摘要 */}
         <Box mb={4} px={{ xs: 0, md: 2 }}>
           <Box mb={1}>
-            <Box sx={{ fontWeight: 600, color: 'primary.main', fontSize: 16 }}>来源:业攻群</Box>
+            <Box sx={{ fontWeight: 600, color: 'primary.main', fontSize: 16 }}>来源:业主攻略·云帆</Box>
           </Box>
           <AISummary data={aiSummaryData} />
         </Box>

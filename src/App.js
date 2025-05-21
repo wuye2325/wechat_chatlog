@@ -3,7 +3,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -113,35 +112,29 @@ export default function App() {
           />
         </Box>
         {/* AI 摘要 */}
-        <Box mb={4}>
-          <Paper elevation={4} sx={{ p: 4, borderRadius: 4 }}>
-            <AISummary data={aiSummaryData} />
-          </Paper>
+        <Box mb={4} px={{ xs: 0, md: 2 }}>
+          <AISummary data={aiSummaryData} />
         </Box>
         {/* 知识图谱 */}
-        <Box mb={4}>
-          <Paper elevation={4} sx={{ p: 4, borderRadius: 4 }}>
-            <ArgumentGraphView
-              argumentTree={chatlog.argumentTree}
-              onNodeClick={handleTreeNodeClick}
-            />
-          </Paper>
+        <Box mb={4} px={{ xs: 0, md: 2 }}>
+          <ArgumentGraphView
+            argumentTree={chatlog.argumentTree}
+            onNodeClick={handleTreeNodeClick}
+          />
         </Box>
         {/* 结构化讨论 */}
-        <Box mb={4}>
-          <Paper elevation={4} sx={{ p: 4, borderRadius: 4 }}>
-            <StructuredDiscussion
-              argumentTree={chatlog.argumentTree}
-              argumentPath={argumentPath}
-              onNavigate={handleNavigate}
-              onTreeNodeClick={handleTreeNodeClick}
-            />
-          </Paper>
+        <Box mb={4} px={{ xs: 0, md: 2 }}>
+          <StructuredDiscussion
+            argumentTree={chatlog.argumentTree}
+            argumentPath={argumentPath}
+            onNavigate={handleNavigate}
+            onTreeNodeClick={handleTreeNodeClick}
+          />
         </Box>
         {/* 推荐阅读 */}
-        <Paper elevation={2} sx={{ p: 4, borderRadius: 4 }}>
+        <Box px={{ xs: 0, md: 2 }}>
           <FurtherReading list={furtherReading} />
-        </Paper>
+        </Box>
       </Container>
     </ThemeProvider>
   );

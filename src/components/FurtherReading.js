@@ -1,12 +1,11 @@
 import React from "react";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Link from "@mui/material/Link";
 
 const FurtherReading = ({ list }) => (
-  <Paper elevation={0} sx={{ mt: 4, p: 3, borderRadius: 3 }}>
+  <div style={{ marginTop: 32, padding: 24 }}>
     <Typography variant="h6" fontWeight={700} mb={2}>
       进一步阅读
     </Typography>
@@ -27,7 +26,7 @@ const FurtherReading = ({ list }) => (
         </ListItem>
       ))}
     </List>
-  </Paper>
+  </div>
 );
 
 export default FurtherReading;

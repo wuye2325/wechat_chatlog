@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
@@ -20,8 +20,79 @@ export default function App() {
   const theme = createTheme({
     palette: {
       mode,
-      primary: { main: "#1e3a8a" },
-      background: { default: mode === "light" ? "#f5f7fa" : "#181c24" }
+      primary: { main: "#3b82f6" },
+      background: {
+        default: mode === "light" ? "#f5f7fa" : "#181c24",
+        paper: mode === "light" ? "#fff" : "#23272f"
+      },
+      text: {
+        primary: mode === "light" ? "#1e293b" : "#f5f7fa",
+        secondary: mode === "light" ? "#64748b" : "#b0b8c1"
+      }
+    },
+    components: {
+      MuiBox: {
+        styleOverrides: {
+          root: {
+            ...(mode === "dark" && {
+              backgroundColor: undefined,
+              color: "#f5f7fa"
+            })
+          }
+        }
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            ...(mode === "dark" && {
+              backgroundColor: "#23272f",
+              color: "#f5f7fa"
+            })
+          }
+        }
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            ...(mode === "dark" && {
+              backgroundColor: "#334155",
+              color: "#fff",
+              borderRadius: 8,
+              fontWeight: 600,
+              fontSize: 13,
+              boxShadow: "0 2px 8px 0 rgba(30,41,59,0.10)",
+              transition: "background 0.2s",
+              '&:hover': {
+                backgroundColor: "#3b82f6",
+                color: "#fff"
+              }
+            })
+          }
+        }
+      },
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            ...(mode === "dark" && {
+              backgroundColor: "#23272f",
+              color: "#3b82f6",
+              '&:hover': {
+                backgroundColor: "#334155"
+              }
+            })
+          }
+        }
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            ...(mode === "dark" && {
+              backgroundColor: "#334155",
+              color: "#f5f7fa"
+            })
+          }
+        }
+      }
     },
     typography: {
       fontFamily: [
@@ -83,6 +154,14 @@ export default function App() {
   const furtherReading = [
     { title: '阳光共治:让小区治理从"家长制"回归"集体决策"', url: "https://yggz.xyz/" }
   ];
+
+  // 动态设置 body 和 #root 背景色，确保深色模式下全局背景同步
+  useEffect(() => {
+    const bg = mode === "light" ? "#f5f7fa" : "#181c24";
+    document.body.style.backgroundColor = bg;
+    const root = document.getElementById("root");
+    if (root) root.style.backgroundColor = bg;
+  }, [mode]);
 
   return (
     <ThemeProvider theme={theme}>

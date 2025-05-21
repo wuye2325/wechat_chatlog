@@ -1,0 +1,14 @@
+# _pages.toml 文件
+
+[build]
+# 使用 npm 运行 build 脚本
+command = "npm run build"
+
+# 构建产物在 build 目录
+publish = "build"
+
+# 单页应用重定向规则
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
